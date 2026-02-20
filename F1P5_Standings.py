@@ -11,7 +11,7 @@ sprint_points_map = {1: 8.0, 2: 7.0, 3: 6.0, 4: 5.0, 5: 4.0, 6: 3.0, 7: 2.0, 8: 
 
 def log_update(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("f1p5_automation_log.txt", "a") as f:
+    with open("Logs/F1P5_Automation_Log.txt", "a") as f:
         f.write(f"[{timestamp}] {message}\n")
 
 def get_standings_data(season_year):
@@ -139,3 +139,4 @@ else:
     log_update("WARNING: No data found in either current or previous season.")
 
     
+
