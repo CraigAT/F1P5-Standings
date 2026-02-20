@@ -1,4 +1,4 @@
-Driver,DriverName,DriverNumber,Team,F1P5Points,RP1,RP2,RP3,RP4,RP5,RP6,RP7,RP8,RP9,RP10,RP11,RP12,SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8,SP9,SP10,SP11,SP12
+Driver,DriverName,DriverNumber,Team,F1P5Points,Race_P1,Race_P2,Race_P3,Race_P4,Race_P5,Race_P6,Race_P7,Race_P8,Race_P9,Race_P10,Race_P11,Race_P12,Sprint_P1,Sprint_P2,Sprint_P3,Sprint_P4,Sprint_P5,Sprint_P6,Sprint_P7,Sprint_P8,Sprint_P9,Sprint_P10,Sprint_P11,Sprint_P12
 ALB,Alexander Albon,23,Williams,318.0,5,4,0,5,0,4,0,2,0,0,0,0,0,1,0,2,1,0,0,0,1,1,0,0
 HAD,Isack Hadjar,6,Racing Bulls,293.0,3,2,6,1,3,1,1,1,2,1,0,1,0,0,1,3,0,2,0,0,0,0,0,0
 ALO,Fernando Alonso,14,Aston Martin,270.0,4,2,1,4,2,1,2,1,2,0,0,0,2,0,1,0,0,0,0,1,0,0,0,0
