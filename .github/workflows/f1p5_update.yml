@@ -1,3 +1,47 @@
+name: F1P5 Update and Commit Log
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # daily at 02:00 UTC (adjust as needed)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install requirements
+        if: files.includes('requirements.txt')
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run F1P5 script
+        run: python F1P5_Standings.py
+
+      - name: Commit log file if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Logs/F1P5_Automation_Log.txt || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Update F1P5 automation log (run ${{ github.run_id }})" || true
+            git push
+          else
+            echo "No changes to commit"
+          fi
 name: Weekly F1.5 Standings Update
 
 on:

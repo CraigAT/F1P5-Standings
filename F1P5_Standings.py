@@ -10,8 +10,12 @@ race_points_map = {1: 25.0, 2: 18.0, 3: 15.0, 4: 12.0, 5: 10.0, 6: 8.0, 7: 6.0, 
 sprint_points_map = {1: 8.0, 2: 7.0, 3: 6.0, 4: 5.0, 5: 4.0, 6: 3.0, 7: 2.0, 8: 1.0}
 
 def log_update(message):
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    logs_dir = os.path.join(base_dir, "Logs")
+    os.makedirs(logs_dir, exist_ok=True)
+    log_path = os.path.join(logs_dir, "F1P5_Automation_Log.txt")
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("Logs/F1P5_Automation_Log.txt", "a") as f:
+    with open(log_path, "a", encoding="utf-8") as f:
         f.write(f"[{timestamp}] {message}\n")
 
 def get_standings_data(season_year):
