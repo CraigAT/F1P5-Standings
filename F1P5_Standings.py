@@ -107,25 +107,25 @@ all_results = pd.concat([race_df, sprint_df])
 if not all_results.empty:
     # --- DRIVER STANDINGS ---
     driver_standings = all_results.groupby(['Driver', 'DriverName', 'DriverNumber', 'Team'])['F1P5Points'].sum().reset_index()
-    d_race_cb = get_countback(race_df, 'Driver', "RP")
-    d_sprint_cb = get_countback(sprint_df, 'Driver', "SP")
+    d_race_cb = get_countback(race_df, 'Driver', "Race_P")
+    d_sprint_cb = get_countback(sprint_df, 'Driver', "Sprint_P")
     driver_standings = driver_standings.merge(d_race_cb, on='Driver', how='left').merge(d_sprint_cb, on='Driver', how='left').fillna(0)
     
-    cb_cols = [c for c in driver_standings.columns if c.startswith(('RP', 'SP'))]
+    cb_cols = [c for c in driver_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     driver_standings[cb_cols] = driver_standings[cb_cols].astype(int)
-    r_cols = sorted([c for c in driver_standings.columns if c.startswith('RP')], key=lambda x: int(x[2:]))
+    r_cols = sorted([c for c in driver_standings.columns if c.startswith('Race_P')], key=lambda x: int(x[6:]))
     driver_standings = driver_standings.sort_values(by=['F1P5Points'] + r_cols + ['DriverName'], ascending=[False] + [False]*len(r_cols) + [True])
     driver_standings.to_csv(f'Data/F1P5_{active_season}_Driver_Championship.csv', index=False)
 
     # --- TEAM STANDINGS ---
     team_standings = all_results.groupby('Team').agg({'F1P5Points': 'sum', 'TeamColor': 'first'}).reset_index()
-    t_race_cb = get_countback(race_df, 'Team', "RP")
-    t_sprint_cb = get_countback(sprint_df, 'Team', "SP")
+    t_race_cb = get_countback(race_df, 'Team', "Race_P")
+    t_sprint_cb = get_countback(sprint_df, 'Team', "Sprint_P")
     team_standings = team_standings.merge(t_race_cb, on='Team', how='left').merge(t_sprint_cb, on='Team', how='left').fillna(0)
     
-    t_cb_cols = [c for c in team_standings.columns if c.startswith(('RP', 'SP'))]
+    t_cb_cols = [c for c in team_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     team_standings[t_cb_cols] = team_standings[t_cb_cols].astype(int)
-    tr_cols = sorted([c for c in team_standings.columns if c.startswith('RP')], key=lambda x: int(x[2:]))
+    tr_cols = sorted([c for c in team_standings.columns if c.startswith('Race_P')], key=lambda x: int(x[6:]))
     team_standings = team_standings.sort_values(by=['F1P5Points'] + tr_cols + ['Team'], ascending=[False] + [False]*len(tr_cols) + [True])
     team_standings.to_csv(f'Data/F1P5_{active_season}_Team_Championship.csv', index=False)
 
