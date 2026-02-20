@@ -1,8 +1,9 @@
-name: F1P5 Update and Commit Log
+name: Weekly F1P5 Update
 
 on:
   schedule:
-    - cron: '0 2 * * *'  # daily at 02:00 UTC (adjust as needed)
+    # Runs at 09:00 UTC every Monday
+    - cron: '0 9 * * 1'
   workflow_dispatch: {}
 
 permissions:
@@ -11,6 +12,7 @@ permissions:
 jobs:
   update-and-commit:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -22,58 +24,26 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install requirements
-        if: files.includes('requirements.txt')
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install fastf1 pandas
+          fi
 
       - name: Run F1P5 script
         run: python F1P5_Standings.py
 
-      - name: Commit log file if changed
+      - name: Commit CSVs and log if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Logs/F1P5_Automation_Log.txt || true
+          git add Data/*.csv Logs/F1P5_Automation_Log.txt || true
           if ! git diff --cached --quiet; then
-            git commit -m "Update F1P5 automation log (run ${{ github.run_id }})" || true
+            git commit -m "Automated F1P5 update (run ${{ github.run_id }})"
             git push
           else
             echo "No changes to commit"
           fi
-name: Weekly F1.5 Standings Update
-
-on:
-  schedule:
-    # This runs at 09:00 UTC every Monday
-    - cron: '0 9 * * 1'
-  workflow_dispatch:
-    # This adds a "Run now" button in GitHub so you can test it manually
-
-jobs:
-  update_standings:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Install Dependencies
-        run: |
-          pip install fastf1 pandas
-
-      - name: Run Standings Script
-        run: python F1P5_Standings.py  # Make sure this matches your filename!
-
-      - name: Commit and Push Changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add *.csv *.txt
-          git commit -m "Automated F1.5 Standings Update" || exit 0
-          git push
