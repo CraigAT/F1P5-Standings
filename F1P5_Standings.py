@@ -115,7 +115,10 @@ if not all_results.empty:
     os.makedirs('Data', exist_ok=True)
 
     # --- DRIVER STANDINGS ---
-    driver_standings = all_results.groupby(['Driver', 'DriverName', 'DriverNumber', 'Team'])['F1P5Points'].sum().reset_index()
+    driver_standings = all_results.groupby(['Driver', 'DriverName', 'DriverNumber'])['F1P5Points'].sum().reset_index()  # Sum up points for each driver
+    latest_info = all_results.sort_values('RoundNumber').groupby('Driver').tail(1)[['Driver', 'Team', 'TeamColor']]  # Get the "Last Known" Team and Color for each driver
+    driver_standings = driver_standings.merge(latest_info, on='Driver', how='left')  # Merge the latest team/color info into the standings
+    driver_standings['TeamColor'] = driver_standings['TeamColor'].apply( lambda x: f"#{x}" if str(x).isalnum() and not str(x).startswith('#') else x )
     d_race_cb = get_countback(race_df, 'Driver', "Race_P")
     d_sprint_cb = get_countback(sprint_df, 'Driver', "Sprint_P")
     if not d_race_cb.empty and 'Driver' in d_race_cb.columns:
@@ -123,7 +126,6 @@ if not all_results.empty:
     if not d_sprint_cb.empty and 'Driver' in d_sprint_cb.columns:
         driver_standings = driver_standings.merge(d_sprint_cb, on='Driver', how='left')
     driver_standings = driver_standings.fillna(0)
-    #driver_standings = driver_standings.merge(d_race_cb, on='Driver', how='left').merge(d_sprint_cb, on='Driver', how='left').fillna(0)
     
     cb_cols = [c for c in driver_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     driver_standings[cb_cols] = driver_standings[cb_cols].astype(int)
@@ -133,6 +135,7 @@ if not all_results.empty:
 
     # --- TEAM STANDINGS ---
     team_standings = all_results.groupby('Team').agg({'F1P5Points': 'sum', 'TeamColor': 'first'}).reset_index()
+    team_standings['TeamColor'] = team_standings['TeamColor'].apply( lambda x: f"#{x}" if str(x).isalnum() and not str(x).startswith('#') else x )
     t_race_cb = get_countback(race_df, 'Team', "Race_P")
     t_sprint_cb = get_countback(sprint_df, 'Team', "Sprint_P")
     if not t_race_cb.empty and 'Team' in t_race_cb.columns:
@@ -140,7 +143,6 @@ if not all_results.empty:
     if not t_sprint_cb.empty and 'Team' in t_sprint_cb.columns:
         team_standings = team_standings.merge(t_sprint_cb, on='Team', how='left')
     team_standings = team_standings.fillna(0)
-    #team_standings = team_standings.merge(t_race_cb, on='Team', how='left').merge(t_sprint_cb, on='Team', how='left').fillna(0)
     
     t_cb_cols = [c for c in team_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     team_standings[t_cb_cols] = team_standings[t_cb_cols].astype(int)
