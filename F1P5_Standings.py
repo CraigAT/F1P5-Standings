@@ -104,16 +104,26 @@ def get_countback(df, group_col, prefix):
     num_df = df[df['F1P5Class'].str.isnumeric()].copy()
     cb = pd.crosstab(num_df[group_col], num_df['F1P5Order'])
     cb.columns = [f'{prefix}{int(c)}' for c in cb.columns]
+    cb.reset_index(inplace=True)
     return cb
 
 all_results = pd.concat([race_df, sprint_df])
 
 if not all_results.empty:
+
+    ## Ensure Data directory exists
+    os.makedirs('Data', exist_ok=True)
+
     # --- DRIVER STANDINGS ---
     driver_standings = all_results.groupby(['Driver', 'DriverName', 'DriverNumber', 'Team'])['F1P5Points'].sum().reset_index()
     d_race_cb = get_countback(race_df, 'Driver', "Race_P")
     d_sprint_cb = get_countback(sprint_df, 'Driver', "Sprint_P")
-    driver_standings = driver_standings.merge(d_race_cb, on='Driver', how='left').merge(d_sprint_cb, on='Driver', how='left').fillna(0)
+    if not d_race_cb.empty and 'Driver' in d_race_cb.columns:
+        driver_standings = driver_standings.merge(d_race_cb, on='Driver', how='left')
+    if not d_sprint_cb.empty and 'Driver' in d_sprint_cb.columns:
+        driver_standings = driver_standings.merge(d_sprint_cb, on='Driver', how='left')
+    driver_standings = driver_standings.fillna(0)
+    #driver_standings = driver_standings.merge(d_race_cb, on='Driver', how='left').merge(d_sprint_cb, on='Driver', how='left').fillna(0)
     
     cb_cols = [c for c in driver_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     driver_standings[cb_cols] = driver_standings[cb_cols].astype(int)
@@ -125,7 +135,12 @@ if not all_results.empty:
     team_standings = all_results.groupby('Team').agg({'F1P5Points': 'sum', 'TeamColor': 'first'}).reset_index()
     t_race_cb = get_countback(race_df, 'Team', "Race_P")
     t_sprint_cb = get_countback(sprint_df, 'Team', "Sprint_P")
-    team_standings = team_standings.merge(t_race_cb, on='Team', how='left').merge(t_sprint_cb, on='Team', how='left').fillna(0)
+    if not t_race_cb.empty and 'Team' in t_race_cb.columns:
+        team_standings = team_standings.merge(t_race_cb, on='Team', how='left')
+    if not t_sprint_cb.empty and 'Team' in t_sprint_cb.columns:
+        team_standings = team_standings.merge(t_sprint_cb, on='Team', how='left')
+    team_standings = team_standings.fillna(0)
+    #team_standings = team_standings.merge(t_race_cb, on='Team', how='left').merge(t_sprint_cb, on='Team', how='left').fillna(0)
     
     t_cb_cols = [c for c in team_standings.columns if c.startswith(('Race_P', 'Sprint_P'))]
     team_standings[t_cb_cols] = team_standings[t_cb_cols].astype(int)
