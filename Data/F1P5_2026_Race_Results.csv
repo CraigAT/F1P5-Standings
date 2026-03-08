@@ -1,0 +1,15 @@
+EventName,RoundNumber,Driver,DriverName,DriverNumber,Team,TeamColor,F1Class,F1Order,F1Points,F1P5Order,F1P5Class,F1P5Points
+Australian,1,BEA,Oliver Bearman,87,Haas F1 Team,9C9FA2,7,7,6.0,1,1,25.0
+Australian,1,LIN,Arvid Lindblad,41,Racing Bulls,6C98FF,8,8,4.0,2,2,18.0
+Australian,1,BOR,Gabriel Bortoleto,5,Audi,F50537,9,9,2.0,3,3,15.0
+Australian,1,GAS,Pierre Gasly,10,Alpine,00A1E8,10,10,1.0,4,4,12.0
+Australian,1,OCO,Esteban Ocon,31,Haas F1 Team,9C9FA2,11,11,0.0,5,5,10.0
+Australian,1,ALB,Alexander Albon,23,Williams,1868DB,12,12,0.0,6,6,8.0
+Australian,1,LAW,Liam Lawson,30,Racing Bulls,6C98FF,13,13,0.0,7,7,6.0
+Australian,1,COL,Franco Colapinto,43,Alpine,00A1E8,14,14,0.0,8,8,4.0
+Australian,1,SAI,Carlos Sainz,55,Williams,1868DB,15,15,0.0,9,9,2.0
+Australian,1,PER,Sergio Perez,11,Cadillac,909090,16,16,0.0,10,10,1.0
+Australian,1,STR,Lance Stroll,18,Aston Martin,229971,R,17,0.0,11,R,0.0
+Australian,1,ALO,Fernando Alonso,14,Aston Martin,229971,R,18,0.0,12,R,0.0
+Australian,1,BOT,Valtteri Bottas,77,Cadillac,909090,R,19,0.0,13,R,0.0
+Australian,1,HUL,Nico Hulkenberg,27,Audi,F50537,W,22,0.0,14,W,0.0
