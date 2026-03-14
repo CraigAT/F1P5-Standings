@@ -1,6 +1,6 @@
 import fastf1 as ff1
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 
 # 1. Configuration
@@ -21,6 +21,7 @@ def log_update(message):
 def get_standings_data(season_year):
     race_standings = []
     sprint_standings = []
+    now = datetime.now(timezone.utc).replace(tzinfo=None)  # Make 'now' timezone-naive to match the session date format from FastF1
     
     try:
         schedule = ff1.get_event_schedule(season_year, include_testing=False)
@@ -28,45 +29,50 @@ def get_standings_data(season_year):
         return [], [], f"Error fetching {season_year} schedule: {str(e)}"
 
     for _, event in schedule.iterrows():
-        # Only pull races that have completed
-        if event["EventDate"] > datetime.now():
+
+        # Skip pre-season testing events
+        if event['RoundNumber'] == 0:
             continue
 
-        sessions_to_pull = {"Race": "R"}
-        if event["EventFormat"] == "sprint_qualifying":
-            sessions_to_pull["Sprint"] = "S"
+        for session_no in range(1, 6):
+            session_name = event[f'Session{session_no}']
+            session_date = event[f'Session{session_no}DateUtc']
 
-        for session_type, session_code in sessions_to_pull.items():
-            try:
-                session = ff1.get_session(season_year, event["EventName"], session_code)
-                session.load(laps=False, telemetry=False, weather=False, messages=False)
-                
-                if session.results.empty:
-                    continue
+            # Only proceed if the session date has actually passed
+            if pd.notna(session_date) and session_date < now:
 
-                filtered_results = session.results[~session.results['TeamName'].isin(excluded_teams)]
+                if session_name in ["Sprint","Race"]:
+                    try:
+                        session = ff1.get_session(season_year, event["RoundNumber"], session_name)
+                        session.load(laps=False, telemetry=False, weather=False, messages=False)
 
-                for _, driver_row in filtered_results.iterrows():
-                    entry = {
-                        "EventName": event["EventName"].replace("Grand Prix", "").strip(),
-                        "RoundNumber": event["RoundNumber"],
-                        "Driver": driver_row["Abbreviation"],
-                        "DriverName": driver_row["FullName"],
-                        "DriverNumber": driver_row["DriverNumber"],
-                        "Team": driver_row["TeamName"],
-                        "TeamColor": driver_row["TeamColor"],
-                        "F1Class": str(driver_row["ClassifiedPosition"]),
-                        "F1Order": int(driver_row["Position"]),
-                        "F1Points": float(driver_row["Points"])
-                    }
-                    if session_type == "Race":
-                        race_standings.append(entry)
-                    else:
-                        sprint_standings.append(entry)
-            except:
-                continue
-                
+                        if session.results.empty:
+                            continue
+
+                        filtered_results = session.results[~session.results['TeamName'].isin(excluded_teams)]
+                        for _, driver_row in filtered_results.iterrows():
+                            entry = {
+                                "EventName": event["EventName"].replace("Grand Prix", "").strip(),
+                                "RoundNumber": event["RoundNumber"],
+                                "Driver": driver_row["Abbreviation"],
+                                "DriverName": driver_row["FullName"],
+                                "DriverNumber": driver_row["DriverNumber"],
+                                "Team": driver_row["TeamName"],
+                                "TeamColor": driver_row["TeamColor"],
+                                "F1Class": str(driver_row["ClassifiedPosition"]),
+                                "F1Order": int(driver_row["Position"]),
+                                "F1Points": float(driver_row["Points"])
+                            }
+                            if session_name == "Race":
+                                race_standings.append(entry)
+                            else:
+                                sprint_standings.append(entry)
+
+                    except:
+                        continue
+
     return race_standings, sprint_standings, "Success"
+
 
 # 2. Main Execution with Fallback Logic
 print(f"Checking for {current_year} data...")
