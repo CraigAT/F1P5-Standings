@@ -5,7 +5,7 @@ import os
 
 # 1. Configuration
 current_year = 2026
-excluded_teams = ["Mercedes", "Red Bull", "Ferrari", "McLaren"]
+excluded_teams = ["Mercedes", "Red Bull Racing", "Ferrari", "McLaren"]
 race_points_map = {1: 25.0, 2: 18.0, 3: 15.0, 4: 12.0, 5: 10.0, 6: 8.0, 7: 6.0, 8: 4.0, 9: 2.0, 10: 1.0}
 sprint_points_map = {1: 8.0, 2: 7.0, 3: 6.0, 4: 5.0, 5: 4.0, 6: 3.0, 7: 2.0, 8: 1.0}
 
