@@ -1,17 +1,15 @@
-Driver,DriverName,DriverNumber,F1P5Points,Team,TeamColor,Race_P1,Race_P2,Race_P3,Race_P4,Race_P5,Race_P6,Race_P7,Race_P8,Race_P9,Race_P10,Race_P11,Race_P12,Race_P13,Race_P14,Sprint_P1,Sprint_P2,Sprint_P3,Sprint_P4,Sprint_P5,Sprint_P6,Sprint_P7,Sprint_P8,Sprint_P9,Sprint_P10,Sprint_P11,Sprint_P12,Sprint_P13,Sprint_P14,Sprint_P15
-VER,Max Verstappen,3,115.0,Red Bull Racing,#4781D7,3,1,0,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-GAS,Pierre Gasly,10,74.0,Alpine,#00A1E8,1,1,0,0,2,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0
-BEA,Oliver Bearman,87,69.0,Haas F1 Team,#9C9FA2,1,1,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0
-LAW,Liam Lawson,30,59.0,Racing Bulls,#6C98FF,0,0,2,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0
-COL,Franco Colapinto,43,56.0,Alpine,#00A1E8,0,1,1,0,0,1,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0,0,0,0,0
-SAI,Carlos Sainz,55,46.0,Williams,#1868DB,0,0,1,0,1,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0
-HAD,Isack Hadjar,6,44.0,Red Bull Racing,#4781D7,0,1,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1
-OCO,Esteban Ocon,31,39.0,Haas F1 Team,#9C9FA2,0,0,0,1,0,1,1,0,0,2,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0
-LIN,Arvid Lindblad,41,34.0,Racing Bulls,#6C98FF,0,0,1,0,0,0,0,3,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0
-BOR,Gabriel Bortoleto,5,33.0,Audi,#F50537,0,0,0,1,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0
-HUL,Nico Hulkenberg,27,20.0,Audi,#F50537,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
-ALB,Alexander Albon,23,18.0,Williams,#1868DB,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0
-BOT,Valtteri Bottas,77,2.0,Cadillac,#909090,0,0,0,0,0,0,0,0,1,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0
-ALO,Fernando Alonso,14,2.0,Aston Martin,#229971,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
-PER,Sergio Perez,11,2.0,Cadillac,#909090,0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0
-STR,Lance Stroll,18,0.0,Aston Martin,#229971,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0
+Driver,DriverName,DriverNumber,F1P5Points,Team,TeamColor,Race_P1,Race_P2,Race_P3,Race_P4,Race_P5,Race_P6,Race_P7,Race_P8,Race_P9,Race_P10,Race_P11,Race_P12,Sprint_P1,Sprint_P2,Sprint_P3,Sprint_P4,Sprint_P5,Sprint_P6,Sprint_P7,Sprint_P8,Sprint_P9,Sprint_P10,Sprint_P11,Sprint_P12,Sprint_P13
+BEA,Oliver Bearman,87,84.0,Haas F1 Team,,2,0,0,1,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0
+COL,Franco Colapinto,43,84.0,Alpine F1 Team,,2,0,0,0,1,0,0,2,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0
+GAS,Pierre Gasly,10,83.0,Alpine F1 Team,,1,1,1,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1
+LAW,Liam Lawson,30,73.0,RB F1 Team,,0,2,1,0,0,0,1,0,0,0,0,0,1,0,0,1,0,1,0,0,0,0,0,0,0
+SAI,Carlos Sainz,55,64.0,Williams,,0,1,0,2,0,0,1,0,1,0,0,0,0,0,1,0,2,0,0,0,0,0,0,0,0
+OCO,Esteban Ocon,31,54.0,Haas F1 Team,,0,0,1,0,1,1,0,1,1,0,0,0,0,0,2,0,0,1,0,0,0,0,0,0,0
+BOR,Gabriel Bortoleto,5,48.0,Audi,,0,0,1,0,2,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0
+LIN,Arvid Lindblad,41,46.0,RB F1 Team,,0,1,0,0,0,1,2,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
+HUL,Nico Hülkenberg,27,29.0,Audi,,0,0,0,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+ALB,Alexander Albon,23,24.0,Williams,,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,1,0
+PER,Sergio Pérez,11,9.0,Cadillac F1 Team,,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0
+ALO,Fernando Alonso,14,7.0,Aston Martin,,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
+BOT,Valtteri Bottas,77,5.0,Cadillac F1 Team,,0,0,0,0,0,0,0,1,0,1,2,0,0,0,0,0,0,0,0,0,0,1,1,0,0
+STR,Lance Stroll,18,3.0,Aston Martin,,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0
