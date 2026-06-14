@@ -69,9 +69,9 @@ Canadian,5,PER,Sergio Pérez,11,Cadillac F1 Team,,R,17,0.0,11,R,0.0
 Canadian,5,ALO,Fernando Alonso,14,Aston Martin,,R,20,0.0,12,R,0.0
 Canadian,5,ALB,Alexander Albon,23,Williams,,R,21,0.0,13,R,0.0
 Canadian,5,LIN,Arvid Lindblad,41,RB F1 Team,,W,22,0.0,14,W,0.0
-Monaco,6,LAW,Liam Lawson,30,RB F1 Team,,5,5,10.0,1,1,25.0
-Monaco,6,LIN,Arvid Lindblad,41,RB F1 Team,,6,6,8.0,2,2,18.0
-Monaco,6,GAS,Pierre Gasly,10,Alpine F1 Team,,7,7,6.0,3,3,15.0
+Monaco,6,GAS,Pierre Gasly,10,Alpine F1 Team,,3,3,15.0,1,1,25.0
+Monaco,6,LAW,Liam Lawson,30,RB F1 Team,,6,6,8.0,2,2,18.0
+Monaco,6,LIN,Arvid Lindblad,41,RB F1 Team,,7,7,6.0,3,3,15.0
 Monaco,6,ALB,Alexander Albon,23,Williams,,8,8,4.0,4,4,12.0
 Monaco,6,OCO,Esteban Ocon,31,Haas F1 Team,,9,9,2.0,5,5,10.0
 Monaco,6,ALO,Fernando Alonso,14,Aston Martin,,10,10,1.0,6,6,8.0
@@ -83,3 +83,17 @@ Monaco,6,SAI,Carlos Sainz,55,Williams,,16,16,0.0,11,11,0.0
 Monaco,6,STR,Lance Stroll,18,Aston Martin,,R,18,0.0,12,R,0.0
 Monaco,6,BEA,Oliver Bearman,87,Haas F1 Team,,R,20,0.0,13,R,0.0
 Monaco,6,BOT,Valtteri Bottas,77,Cadillac F1 Team,,R,21,0.0,14,R,0.0
+Barcelona,7,GAS,Pierre Gasly,10,Alpine F1 Team,,7,7,6.0,1,1,25.0
+Barcelona,7,LAW,Liam Lawson,30,RB F1 Team,,8,8,4.0,2,2,18.0
+Barcelona,7,LIN,Arvid Lindblad,41,RB F1 Team,,9,9,2.0,3,3,15.0
+Barcelona,7,COL,Franco Colapinto,43,Alpine F1 Team,,10,10,1.0,4,4,12.0
+Barcelona,7,BOR,Gabriel Bortoleto,5,Audi,,11,11,0.0,5,5,10.0
+Barcelona,7,SAI,Carlos Sainz,55,Williams,,12,12,0.0,6,6,8.0
+Barcelona,7,OCO,Esteban Ocon,31,Haas F1 Team,,13,13,0.0,7,7,6.0
+Barcelona,7,PER,Sergio Pérez,11,Cadillac F1 Team,,14,14,0.0,8,8,4.0
+Barcelona,7,BEA,Oliver Bearman,87,Haas F1 Team,,17,17,0.0,9,9,2.0
+Barcelona,7,ALB,Alexander Albon,23,Williams,,R,18,0.0,10,R,0.0
+Barcelona,7,ALO,Fernando Alonso,14,Aston Martin,,R,19,0.0,11,R,0.0
+Barcelona,7,HUL,Nico Hülkenberg,27,Audi,,R,20,0.0,12,R,0.0
+Barcelona,7,BOT,Valtteri Bottas,77,Cadillac F1 Team,,R,21,0.0,13,R,0.0
+Barcelona,7,STR,Lance Stroll,18,Aston Martin,,R,22,0.0,14,R,0.0
